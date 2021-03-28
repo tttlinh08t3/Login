@@ -2,11 +2,12 @@ import { actions } from '../actions/auth.action';
 import {useLocation} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 function Login() {
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
-    const { isLoggedIn } = useSelector(state => state.authentication);
+    const { isLoggedIn, user } = useSelector(state => state.authentication);
     const dispatch = useDispatch();
 
     const location = useLocation();
@@ -25,7 +26,9 @@ function Login() {
     }
 
     console.log('isLoggedIn ' , isLoggedIn);
-
+    if(!!isLoggedIn && !!user) {
+        return <Redirect to="/home" />;
+    }
 
     return (
         <div className="container col-md-6" name="form">
