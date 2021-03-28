@@ -14,12 +14,6 @@ function App() {
   const { user } = useSelector((state) => state.authentication);
 
   console.log('user ' , user);
-//   const dispatch = useDispatch();
-
-//   useEffect(() => { 
-//     dispatch(actions.logout()); 
-// }, []);
-
 
 return (
   <Router history={history}>
